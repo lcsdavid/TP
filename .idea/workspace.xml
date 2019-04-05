@@ -82,11 +82,26 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Panier.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Panier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="19" column="79" lean-forward="true" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+              <folding>
+                <element signature="method#retiterArticle#0;class#Panier#0" />
+                <element signature="method#calculMontantPanier#0;class#Panier#0" />
+                <element signature="method#clone#0;class#Panier#0" />
+                <element signature="method#toString#0;class#Panier#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            <state relative-caret-position="714">
+              <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -344,7 +359,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17004265" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17004265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -511,20 +526,6 @@
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/ServerManager.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/Map.java" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/util/HashMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Panier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-          <folding>
-            <element signature="method#modifierQuantitéArticle#0;class#Panier#0" />
-            <element signature="method#retiterArticle#0;class#Panier#0" />
-            <element signature="method#calculMontantPanier#0;class#Panier#0" />
-            <element signature="method#clone#0;class#Panier#0" />
-            <element signature="method#toString#0;class#Panier#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Article.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -533,13 +534,6 @@
             <element signature="method#Article#1;class#Article#0" />
             <element signature="method#toString#0;class#Article#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/FooImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -555,18 +549,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/CatalogueImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/Catalogue.java" />
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
-          <folding>
-            <element signature="method#isArticle#0;class#Catalogue#0" />
-            <element signature="method#article#0;class#Catalogue#0" />
-            <element signature="method#toString#0;class#Catalogue#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Manager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -576,18 +558,6 @@
             <element signature="method#catalogue#0;class#Manager#0" />
             <element signature="method#envoyéCommande#0;class#Manager#0" />
             <element signature="method#recevoirCommande#0;class#Manager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/HelloImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#HelloImpl#0;class#HelloImpl#0" />
-            <element signature="method#foo#0;class#HelloImpl#0" />
           </folding>
         </state>
       </provider>
@@ -612,10 +582,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/FooImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <folding>
+            <element signature="method#isArticle#0;class#Catalogue#0" />
+            <element signature="method#article#0;class#Catalogue#0" />
+            <element signature="method#toString#0;class#Catalogue#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/HelloImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#HelloImpl#0;class#HelloImpl#0" />
+            <element signature="method#foo#0;class#HelloImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Panier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="79" lean-forward="true" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+          <folding>
+            <element signature="method#retiterArticle#0;class#Panier#0" />
+            <element signature="method#calculMontantPanier#0;class#Panier#0" />
+            <element signature="method#clone#0;class#Panier#0" />
+            <element signature="method#toString#0;class#Panier#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        <state relative-caret-position="714">
+          <caret line="53" column="74" selection-start-line="53" selection-start-column="74" selection-end-line="53" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
