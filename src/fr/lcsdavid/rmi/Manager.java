@@ -3,6 +3,7 @@ package fr.lcsdavid.rmi;
 import fr.lcsdavid.rmi.server.Catalogue;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,15 +15,15 @@ public class Manager implements Remote {
         super();
     }
 
-    public Catalogue catalogue() {
+    public Catalogue catalogue() throws RemoteException {
         return catalogue;
     }
 
-    public void envoyéCommande(Commande commande) {
+    public void envoyéCommande(Commande commande) throws RemoteException {
         commandes.add(commande);
     }
 
-    public Commande recevoirCommande() {
+    public Commande recevoirCommande() throws RemoteException {
         return commandes.remove(0);
     }
 }
