@@ -2,7 +2,7 @@ package fr.lcsdavid.rmi.client;
 
 import fr.lcsdavid.rmi.ArticleNotFound;
 import fr.lcsdavid.rmi.Catalogue;
-import fr.lcsdavid.rmi.Manager;
+import fr.lcsdavid.rmi.IManager;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -68,7 +68,7 @@ public class Client {
         // System.out.println(h.sayHello("Vladimir Putin"));
         // System.out.println(h.data("Сейчас"));
         // System.out.println(h.foo().sayFoo("Luka"));
-        Manager manager = (Manager) registry.lookup("manager");
+        IManager manager = (IManager) registry.lookup("manager");
         Catalogue catalogue = manager.catalogue();
         //System.out.println(catalogue.toString());
 

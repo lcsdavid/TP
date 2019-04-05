@@ -5,7 +5,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Manager implements Remote {
+public class Manager implements IManager {
     private Catalogue catalogue = new Catalogue();
     private List<Commande> commandes = new ArrayList<>();
 

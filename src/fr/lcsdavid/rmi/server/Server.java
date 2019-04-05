@@ -1,6 +1,7 @@
 package fr.lcsdavid.rmi.server;
 
 import fr.lcsdavid.rmi.Article;
+import fr.lcsdavid.rmi.IManager;
 import fr.lcsdavid.rmi.Manager;
 
 import java.rmi.RemoteException;
@@ -12,7 +13,7 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
         // Hello h = new HelloImpl();
-        Manager manager = new Manager();
+        IManager manager = new Manager();
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
     }
