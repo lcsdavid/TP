@@ -5,6 +5,7 @@ public interface Catalogue {
 
     public int nombreArticle();
 
+
     @Override
     public String toString();
 }
