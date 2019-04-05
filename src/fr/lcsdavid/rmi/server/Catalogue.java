@@ -22,6 +22,13 @@ public class Catalogue implements Serializable {
         throw new ArticleNotFound(clé);
     }
 
+    public Boolean isArticle(String clé){
+        for(Article article : articles){
+            return true;
+        }
+        return false;
+    }
+
     public void ajouterArticle(Article article) {
         articles.add(article);
     }
