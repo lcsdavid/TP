@@ -13,14 +13,15 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
         // Hello h = new HelloImpl();
-        IManager manager = new Manager();
+        Manager manager = new Manager();
+        Server.initialisation(manager);
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
     }
 
-    public void initialisation(Manager manager) throws RemoteException {
+    public static void initialisation(Manager manager) throws RemoteException {
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
-        manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
+        manager.catalogue().ajouterArticle(new Article("Epée", "clinc", 3));
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
     }
