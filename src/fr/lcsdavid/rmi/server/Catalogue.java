@@ -14,6 +14,14 @@ public class Catalogue implements Serializable {
         super();
     }
 
+    public Article getArticle(String clé) throws ArticleNotFound {
+        for(Article article : articles){
+            if (article.getClé().equals(clé))
+                return article;
+        }
+        throw new ArticleNotFound(clé);
+    }
+
     public void ajouterArticle(Article article) {
         articles.add(article);
     }
