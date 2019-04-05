@@ -17,7 +17,10 @@ public class Server {
     }
 
     public void initialisation() {
-        manager.catalogue().ajouterArticle(new Article("Coca-Cola", ""));
+        manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
+        manager.catalogue().ajouterArticle(new Article("PC", "description PC", 3000));
+        manager.catalogue().ajouterArticle(new Article("Java 11", "description java 11", 0.15f));
+        manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
     }
 
     public void traiterCommande() {

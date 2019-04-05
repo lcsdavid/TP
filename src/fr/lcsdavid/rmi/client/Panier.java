@@ -7,51 +7,52 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Panier {
-    private Map<Article, Integer> panier = new HashMap<>();
+    private Map<Article, Integer> articles = new HashMap<>();
 
     public Panier() {
         super();
     }
 
     public void ajouterArticle(Article article) {
-        panier.put(article, 0);
+        articles.put(article, 0);
     }
 
     public void modifierQuantitéArticle(Article article, int nouvelleQuantité) {
         if (nouvelleQuantité < 1)
             throw new IllegalArgumentException();
-        if (!panier.containsKey(article))
+        if (!articles.containsKey(article))
             throw new IllegalArgumentException();
-        panier.put(article, nouvelleQuantité);
+        articles.put(article, nouvelleQuantité);
     }
 
     public void retiterArticle(Article article) {
-        if (!panier.containsKey(article))
+        if (!articles.containsKey(article))
             throw new IllegalArgumentException();
-        panier.remove(article);
+        articles.remove(article);
     }
 
     public double calculMontantPanier() {
         double montant = 0;
-        for (Map.Entry<Article, Integer> articleEntry : panier.entrySet())
+        for (Map.Entry<Article, Integer> articleEntry : articles.entrySet())
             montant += articleEntry.getKey().getPrix() * articleEntry.getValue();
         return montant;
     }
 
     public Commande toCommande(long client) {
-        return new Commande(client, panier);
+        return new Commande(client, articles);
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
+    public Object clone() {
         Panier panier = new Panier();
-        return super.clone();
+        panier.articles = new HashMap<>(articles);
+        return panier;
     }
 
     @Override
     public String toString() {
         String s = "";
-        for (Map.Entry<Article, Integer> articleEntry : panier.entrySet())
+        for (Map.Entry<Article, Integer> articleEntry : articles.entrySet())
             s += '[' + articleEntry.getValue() + "] " + articleEntry.getKey();
         return s;
     }

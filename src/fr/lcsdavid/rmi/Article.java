@@ -9,13 +9,14 @@ public class Article implements Serializable {
     private float prix;
     private Calendar date;
 
-    Article(String clé, String description, float prix) {
+    public Article(String clé, String description, float prix) {
         this.clé = clé;
         this.description = description;
         this.prix = prix;
         date = null;
     }
-    Article(String clé, String description, float prix, Calendar date) {
+
+    public Article(String clé, String description, float prix, Calendar date) {
         this.clé = clé;
         this.description = description;
         this.prix = prix;
