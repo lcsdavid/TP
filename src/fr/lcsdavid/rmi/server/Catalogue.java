@@ -7,20 +7,13 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Catalogue implements Serializable {
+public class Catalogue implements fr.lcsdavid.rmi.Catalogue, Serializable {
     Set<Article> articles = new HashSet<>();
 
     public Catalogue() {
         super();
     }
 
-    public Article getArticle(String clé) throws ArticleNotFound {
-        for(Article article : articles){
-            if (article.getClé().equals(clé))
-                return article;
-        }
-        throw new ArticleNotFound(clé);
-    }
 
     public Boolean isArticle(String clé){
         for(Article article : articles){
@@ -33,6 +26,7 @@ public class Catalogue implements Serializable {
         articles.add(article);
     }
 
+    @Override
     public Article article(String clé) throws ArticleNotFound {
         for (Article article : articles) {
             if (article.getClé().equals(clé))

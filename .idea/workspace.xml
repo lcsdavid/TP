@@ -43,13 +43,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Catalogue.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Catalogue.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/Catalogue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state>
+              <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
               <folding>
-                <element signature="method#article#0;class#Catalogue#0" />
                 <element signature="method#toString#0;class#Catalogue#0" />
               </folding>
             </state>
@@ -59,8 +58,8 @@
       <file leaf-file-name="Catalogue.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -93,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+            <state relative-caret-position="513">
+              <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,11 +185,11 @@
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/ServerManager.java" />
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/Manager.java" />
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Panier.java" />
-        <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java" />
-        <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java" />
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/Server.java" />
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/Article.java" />
+        <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java" />
         <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/Catalogue.java" />
+        <option value="$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java" />
       </list>
     </option>
   </component>
@@ -200,10 +199,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="y" value="520" />
     <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="height" value="527" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -324,7 +324,7 @@
     <option name="totallyTimeSpent" value="13745000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -340,7 +340,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34901533" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17004265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -377,7 +377,6 @@
         <state relative-caret-position="153">
           <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
-            <element signature="method#article#0;class#Catalogue#0" />
             <element signature="method#toString#0;class#Catalogue#0" />
           </folding>
         </state>
@@ -549,23 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/HelloImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -595,13 +577,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/Catalogue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/server/Catalogue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state>
+          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
           <folding>
-            <element signature="method#article#0;class#Catalogue#0" />
             <element signature="method#toString#0;class#Catalogue#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/fr/lcsdavid/rmi/client/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
