@@ -12,11 +12,12 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
         // Hello h = new HelloImpl();
+        initialisation();
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
     }
 
-    public void initialisation() {
+    public static void initialisation() {
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
         manager.catalogue().ajouterArticle(new Article("PC", "description PC", 3000));
         manager.catalogue().ajouterArticle(new Article("Java 11", "description java 11", 0.15f));

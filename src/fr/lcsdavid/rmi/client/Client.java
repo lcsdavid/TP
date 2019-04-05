@@ -17,7 +17,7 @@ public class Client {
         // System.out.println(h.data("Сейчас"));
         // System.out.println(h.foo().sayFoo("Luka"));
         Manager manager = (Manager) registry.lookup("manager");
-        Catalogue catalogue = manager.catalogue();
-        System.out.println(catalogue.toString());
+        //Catalogue catalogue = manager.catalogue();
+        //System.out.println(catalogue.toString());
     }
 }
