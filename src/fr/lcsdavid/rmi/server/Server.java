@@ -9,22 +9,22 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class Server {
-    private static Manager manager = new Manager();
 
     public static void main(String[] args) throws Exception {
         // Hello h = new HelloImpl();
+        Manager manager = new Manager();
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
     }
 
-    public void initialisation() throws RemoteException {
+    public void initialisation(Manager manager) throws RemoteException {
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
         manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
     }
 
-    public void traiterCommande() throws RemoteException {
+    public void traiterCommande(Manager manager) throws RemoteException {
         manager.recevoirCommande(); // Traiter comme on le souhaite.
     }
 }

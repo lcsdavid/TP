@@ -1,7 +1,5 @@
 package fr.lcsdavid.rmi;
 
-import fr.lcsdavid.rmi.server.Catalogue;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -12,9 +10,4 @@ public interface Hello extends Remote {
     public Data data(String name) throws RemoteException;
 
     public Foo foo() throws RemoteException;
-
-
-    /* TP après-midi */
-    public Catalogue catalogue();
-
 }

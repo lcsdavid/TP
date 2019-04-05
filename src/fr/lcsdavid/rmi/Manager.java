@@ -1,7 +1,5 @@
 package fr.lcsdavid.rmi;
 
-import fr.lcsdavid.rmi.server.Catalogue;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;

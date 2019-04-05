@@ -1,8 +1,8 @@
 package fr.lcsdavid.rmi.client;
 
 import fr.lcsdavid.rmi.ArticleNotFound;
+import fr.lcsdavid.rmi.Catalogue;
 import fr.lcsdavid.rmi.Manager;
-import fr.lcsdavid.rmi.server.Catalogue;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

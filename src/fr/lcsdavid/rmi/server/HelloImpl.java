@@ -29,11 +29,4 @@ public class HelloImpl implements Hello {
         return foo;
     }
 
-
-    /* TP de l'après-midi */
-    private static Catalogue LE_CATALOGUE = new Catalogue();
-
-    public Catalogue catalogue() {
-        return LE_CATALOGUE;
-    }
 }
