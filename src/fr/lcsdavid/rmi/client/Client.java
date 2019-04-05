@@ -10,32 +10,33 @@ import java.util.Scanner;
 
 public class Client {
 
-    private static int Choix() {
+    private static String Choix() {
         System.out.println("Pour quitter entrez -1");
         System.out.println("Pour afficher tous les produits entrez 0");
         System.out.println("Pour afficher un produit entrez sa clé");
         System.out.println("Pour interagire avec le panier entrez 1");
-        return -1;
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        return str;
     }
 
-    private static int ChoixPanier() {
+    private static String ChoixPanier() {
 
         System.out.println("Pour ne rien faire et retourner à l'affichage général entrez -1");
         System.out.println("Pour afficher tous les produits du panier entrez 0");
         System.out.println("Pour ajouter ou retirer un ou plusieurs produits entrez sa clé");
         System.out.println("Pour afficher le prix du panier entrez 1");
-        return -1;
-    }
-
-    private static void manipulation(int choix, Catalogue catalogue) {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
+        return str;
+    }
+
+    private static void manipulation(String str, Catalogue catalogue) {
 
         if (str.equals("0"))
             System.out.println(catalogue.toString());
         else if (str.equals("1")) {
-            ChoixPanier();
-            str = sc.nextLine();
+            str = ChoixPanier();
             if (str.equals("-1"))
                 return;
             else if (str.equals("0"))
@@ -75,9 +76,9 @@ public class Client {
         Boolean shopping = true;
 
         while (shopping) {
-            int res = Choix();
+            String res = Choix();
 
-            if (res == -1)
+            if (res.equals("-1"))
                 break;
             manipulation(res, catalogue);
         }
