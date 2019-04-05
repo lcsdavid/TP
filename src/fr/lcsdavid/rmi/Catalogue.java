@@ -15,8 +15,7 @@ public class Catalogue implements Serializable {
     public Catalogue() {
         super();
     }
-
-
+    
     public Boolean isArticle(String clé){
         for(Article article : articles){
             return true;
@@ -44,7 +43,7 @@ public class Catalogue implements Serializable {
     public String toString() {
         String s = "";
         for (Article article: articles)
-            s += articles.toString() + '\n';
+            s += article.toString() + "\n\n";
         return s;
     }
 }

@@ -47,6 +47,6 @@ public class Article implements Serializable {
     }
 
     public String toString() {
-        return (date == null) ? clé + " :\n" + description + "\nPour : " + prix + "\ndisponible dès maintenant!" : clé + " :\n" + description + "\nPour : " + prix + "\n" + date.toString();
+        return (date == null) ? (clé + " :\n" + description + "\nPour : " + prix + "\ndisponible dès maintenant!") : (clé + " :\n" + description + "\nPour : " + prix + "\n" + date.toString());
     }
 }
