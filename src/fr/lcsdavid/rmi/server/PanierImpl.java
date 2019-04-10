@@ -41,6 +41,7 @@ public class PanierImpl implements Panier {
         return montant;
     }
 
+    @Deprecated
     public Commande toCommande(long client) {
         return new Commande(client, articles);
     }

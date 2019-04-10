@@ -11,18 +11,17 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server {
     private Registry registry = LocateRegistry.createRegistry(1099);
 
-    // private Manager manager = new Manager();
+    private Manager manager = new Manager();
 
-    private Catalogue catalogue = new Catalogue();
     private Pool<Panier> pool = new PoolImpl<>(PanierImpl::new, 10);
 
     public Server() throws RemoteException, AlreadyBoundException {
-        // registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
+        registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
         registry.bind("pool", UnicastRemoteObject.exportObject(pool, 0));
 
-        catalogue.ajouterArticle(new Article("Epée", "Excalibur !", 3));
-        catalogue.ajouterArticle(new Article("ВОДКА", "Alcool Russe de bonne facture.", 15.99f));
-        catalogue.ajouterArticle(new Article("Coca-Cola", "description coca", 3));
+        manager.catalogue().ajouterArticle(new Article("Epée", "Excalibur !", 3));
+        manager.catalogue().ajouterArticle(new Article("ВОДКА", "Alcool Russe de bonne facture.", 15.99f));
+        manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
     }
 
     public static void main(String[] args) throws Exception {
