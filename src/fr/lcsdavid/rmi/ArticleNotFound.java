@@ -1,13 +1,8 @@
 package fr.lcsdavid.rmi;
 
 public class ArticleNotFound extends Exception {
-    public String getCle() {
-        return cle;
-    }
 
-    private String cle;
-
-    public ArticleNotFound(String cle){
-        this.cle = cle;
+    public ArticleNotFound(String clé){
+        super("Cet article '" + clé + "' n'existe pas!");
     }
 }

@@ -2,10 +2,6 @@ package fr.lcsdavid.rmi;
 
 import java.io.Serializable;
 
-import fr.lcsdavid.rmi.Article;
-import fr.lcsdavid.rmi.ArticleNotFound;
-
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,9 +13,8 @@ public class Catalogue implements Serializable {
     }
     
     public Boolean isArticle(String clé){
-        for(Article article : articles){
+        for (Article article: articles)
             return true;
-        }
         return false;
     }
 
@@ -29,7 +24,7 @@ public class Catalogue implements Serializable {
 
     public Article article(String clé) throws ArticleNotFound {
         for (Article article : articles) {
-            if (article.getClé().equals(clé))
+            if (article.clé().equals(clé))
                 return article;
         }
         throw new ArticleNotFound(clé);

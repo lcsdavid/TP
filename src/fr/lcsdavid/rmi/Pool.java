@@ -3,13 +3,12 @@ package fr.lcsdavid.rmi;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface Pool<T extends Remote & Clearable> extends Remote {
+public interface Pool<T extends Remote & Clearable> extends RemotePublisher {
+    T instance() throws RemoteException;
 
-    public T getInstance() throws RemoteException;
+    int taille() throws RemoteException;
 
-    public int getTaille() throws RemoteException;
+    int nombreDisponible() throws RemoteException;
 
-    public int nbObjDispo() throws RemoteException;
-
-    public boolean restitution(T objet) throws RemoteException;
+    void restitution(T objet) throws RemoteException;
 }

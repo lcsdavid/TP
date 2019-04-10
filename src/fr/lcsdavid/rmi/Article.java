@@ -2,51 +2,66 @@ package fr.lcsdavid.rmi;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class Article implements Serializable {
     private String clé;
     private String description;
     private float prix;
-    private Calendar date;
+    private Calendar calendar;
 
     public Article(String clé, String description, float prix) {
+        this(clé, description, prix, null);
+    }
+
+    public Article(String clé, String description, float prix, Calendar calendar) {
         this.clé = clé;
         this.description = description;
         this.prix = prix;
-        date = null;
+        /* On ne replace pas la date si elle est passée. */
+        this.calendar = Calendar.getInstance().after(calendar) ? null : calendar;
     }
 
-    public Article(String clé, String description, float prix, Calendar date) {
-        this.clé = clé;
-        this.description = description;
-        this.prix = prix;
-        if (date.before(Calendar.getInstance()))
-            date = null; // dans ce cas on  ne replace pas la date car elle n'est pas valide
-        else
-            this.date = date;
+    public Calendar date() {
+        return calendar;
     }
 
-    public Calendar getDate() {
-        return date;
+    public void date(Calendar calendar) {
+        this.calendar = calendar;
     }
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
-
-    public String getClé() {
+    public String clé() {
         return clé;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public float getPrix() {
+    public double prix() {
         return prix;
     }
 
     public String toString() {
-        return (date == null) ? (clé + " :\n" + description + "\nPour : " + prix + "\ndisponible dès maintenant!") : (clé + " :\n" + description + "\nPour : " + prix + "\n" + date.toString());
+        return (calendar == null) ? (clé + " :\n" + description + "\nPour : " + prix + "\ndisponible dès maintenant!") : (clé + " :\n" + description + "\nPour : " + prix + "\n" + calendar.toString());
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj ==  null)
+            return false;
+        if (obj == this)
+            return true;
+        if (obj instanceof Article) {
+            Article article = (Article) obj;
+            return article.clé.equals(clé) && article.description.equals(description) && article.prix == prix
+                    && (article.calendar == null ? calendar == null : article.calendar.equals(calendar));
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(clé, description, prix, calendar);
     }
 }

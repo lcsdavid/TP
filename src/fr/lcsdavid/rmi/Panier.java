@@ -4,18 +4,18 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface Panier extends Remote, Clearable {
+    void ajouterArticle(Article article, int quantité) throws RemoteException;
 
-    public void ajouterArticle(Article article) throws RemoteException;
+    void modifierQuantitéArticle(Article article, int nouvelleQuantité) throws RemoteException;
 
-    public void modifierQuantitéArticle(Article article, int nouvelleQuantité) throws RemoteException;
+    void retirerArticle(Article article) throws RemoteException;
 
-    public void retiterArticle(Article article) throws RemoteException;
+    double montantPanier() throws RemoteException;
 
-    public double calculMontantPanier() throws RemoteException;
+    @Deprecated
+    Commande toCommande(long client) throws RemoteException;
 
-    public Commande toCommande(long client) throws RemoteException;
-
-
-
-
+    default String remoteToString() throws RemoteException {
+        return toString();
+    }
 }

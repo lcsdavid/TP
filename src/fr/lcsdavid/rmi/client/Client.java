@@ -7,68 +7,52 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
 
-public class Client {
+public class Client implements RemoteSubscriber {
 
     private static String Choix(Scanner sc) {
-        System.out.println("Pour quitter entrez -1");
-        System.out.println("Pour afficher tous les produits entrez 0");
-        System.out.println("Pour afficher un produit entrez sa clé");
-        System.out.println("Pour interagire avec le panier entrez 1");
-        String str = sc.nextLine();
-        return str;
+        System.out.println("[0] Pour quitter.");
+        System.out.println("[1] Pour afficher tous les produits.");
+        System.out.println("[2] Pour interagire avec le panier.");
+        System.out.println("Pour afficher un produit entrez sa clé.");
+        return sc.nextLine();
     }
 
     private static String ChoixPanier(Scanner sc) {
-
-        System.out.println("Pour ne rien faire et retourner à l'affichage général entrez -1");
-        System.out.println("Pour afficher tous les produits du panier entrez 0");
+        System.out.println("[0] Pour ne rien faire et retourner à l'affichage général.");
+        System.out.println("[1] Pour afficher tous les produits du panier.");
+        System.out.println("[2] Pour afficher le prix du panier.");
         System.out.println("Pour ajouter ou retirer un ou plusieurs produits entrez sa clé");
-        System.out.println("Pour afficher le prix du panier entrez 1");
-        String str = sc.nextLine();
-        return str;
+
+        return sc.nextLine();
     }
 
     private static void manipulation(String str, Catalogue catalogue, Panier panier, Scanner sc) throws RemoteException {
-
-        if (str.equals("0"))
+        if (str.equals("1"))
             System.out.println(catalogue.toString());
-        else if (str.equals("1")) {
+        else if (str.equals("2")) { /* Panier. */
             str = ChoixPanier(sc);
-            if (str.equals("-1"))
+            if (str.equals("0"))
                 return;
-            else if (str.equals("0"))
-                System.out.println(panier.toString());
             else if (str.equals("1"))
-                System.out.println(panier.calculMontantPanier());
-            else{
-                String produit = str;
-                System.out.println("Entrez la quantité de produit désirée");
-                int qt;
-                qt = sc.nextInt();
+                System.out.println(panier.remoteToString());
+            else if (str.equals("2"))
+                System.out.println(panier.montantPanier());
+            else {
                 try {
-                    panier.modifierQuantitéArticle(catalogue.article(produit), qt);
+                    Article article = catalogue.article(str);
+                    System.out.println("Entrez la quantité de produit désirée: ");
+                    panier.modifierQuantitéArticle(article, sc.nextInt());
                 } catch (ArticleNotFound articleNotFound) {
-                    try {
-                        panier.ajouterArticle(catalogue.article(produit));
-                        panier.modifierQuantitéArticle(catalogue.article(produit), qt);
-                    } catch (ArticleNotFound articleNotFound1) {
-                        articleNotFound1.printStackTrace();
-                    }
+                    System.out.println("Cet objet '" + str + "' n'existe pas!");
                 }
-
-
             }
-        }
-        //on est au moment où le client à forcement entré une clé (ou aurait du)
-        else if (catalogue.isArticle(str))//si la clé existe
-        {
+        } else if (!str.isEmpty()) {
             try {
                 System.out.println(catalogue.article(str).toString());
             } catch (ArticleNotFound articleNotFound) {
-                articleNotFound.printStackTrace();
+                System.out.println("Cet objet '" + str + "' n'existe pas!");
             }
-        } else //l'utilisateur aurait du entrer une clé mais elle n'est pas valide
-            System.out.println("Cet objet n'existe pas!");
+        }
     }
 
     public static void main(String[] args) throws Exception {
@@ -84,20 +68,25 @@ public class Client {
         Catalogue catalogue = manager.catalogue();
         //System.out.println(catalogue.toString());
         Pool<Panier> pool = (Pool<Panier>) registry.lookup("pool");
-        Panier panier = pool.getInstance();
+        Panier panier = pool.instance();
+
+        boolean shopping = true;
         if(panier == null){
             System.out.println("au secours on a pas de panier !");
+            shopping = false;
         }
-
-        Boolean shopping = true;
+        Client client = new Client();
+        client.subscribe(pool);
 
         Scanner sc = new Scanner(System.in);
         while (shopping) {
             String res = Choix(sc);
-
-            if (res.equals("-1"))
+            if (res.equals("0"))
                 break;
             manipulation(res, catalogue, panier, sc);
         }
+
+        pool.restitution(panier);
+        client.unsubscribe(pool);
     }
 }

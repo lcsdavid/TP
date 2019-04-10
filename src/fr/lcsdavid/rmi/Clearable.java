@@ -5,5 +5,5 @@ import java.rmi.RemoteException;
 
 public interface Clearable extends Remote {
 
-    public void clear() throws RemoteException;
+    void clear() throws RemoteException;
 }

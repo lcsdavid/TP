@@ -14,28 +14,30 @@ public class PanierImpl implements Panier {
         super();
     }
 
-    public void ajouterArticle(Article article) {
-        articles.put(article, 0);
+    public void ajouterArticle(Article article, int quantité) {
+        articles.put(article, quantité);
     }
 
     public void modifierQuantitéArticle(Article article, int nouvelleQuantité) {
-        if (nouvelleQuantité < 1)
+        if (nouvelleQuantité < 0)
             throw new IllegalArgumentException();
-        if (!articles.containsKey(article))
-            throw new IllegalArgumentException();
-        articles.put(article, nouvelleQuantité);
+        if (nouvelleQuantité != 0) {
+            if (articles.containsKey(article))
+                articles.replace(article, nouvelleQuantité);
+            else
+                ajouterArticle(article, nouvelleQuantité);
+        } else
+            retirerArticle(article);
     }
 
-    public void retiterArticle(Article article) {
-        if (!articles.containsKey(article))
-            throw new IllegalArgumentException();
+    public void retirerArticle(Article article) {
         articles.remove(article);
     }
 
-    public double calculMontantPanier() {
+    public double montantPanier() {
         double montant = 0;
         for (Map.Entry<Article, Integer> articleEntry : articles.entrySet())
-            montant += articleEntry.getKey().getPrix() * articleEntry.getValue();
+            montant += articleEntry.getKey().prix() * articleEntry.getValue();
         return montant;
     }
 
@@ -44,17 +46,10 @@ public class PanierImpl implements Panier {
     }
 
     @Override
-    public Object clone() {
-        PanierImpl panier = new PanierImpl();
-        panier.articles = new HashMap<>(articles);
-        return panier;
-    }
-
-    @Override
     public String toString() {
         String s = "";
         for (Map.Entry<Article, Integer> articleEntry : articles.entrySet())
-            s += '[' + articleEntry.getValue() + "] " + articleEntry.getKey();
+            s += "[Quantité: " + articleEntry.getValue() + "] " + articleEntry.getKey().clé() + "\n";
         return s;
     }
 

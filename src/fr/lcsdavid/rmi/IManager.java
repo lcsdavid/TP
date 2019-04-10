@@ -3,11 +3,15 @@ package fr.lcsdavid.rmi;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+@Deprecated
 public interface IManager extends Remote {
 
-    public Catalogue catalogue() throws RemoteException;
+    @Deprecated
+    Catalogue catalogue() throws RemoteException;
 
-    public void envoyéCommande(Commande commande) throws RemoteException;
+    @Deprecated
+    void envoyéCommande(Commande commande) throws RemoteException;
 
-    public Commande recevoirCommande() throws RemoteException;
+    @Deprecated
+    Commande recevoirCommande() throws RemoteException;
 }
