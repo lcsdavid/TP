@@ -5,12 +5,11 @@ import fr.lcsdavid.rmi.Pool;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.server.RemoteStub;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-public class PoolImpl<T extends Remote & Clearable> implements Pool {
+public class PoolImpl<T extends Remote> implements Pool {
 
     private Supplier<T> supplier;
 
@@ -42,15 +41,17 @@ public class PoolImpl<T extends Remote & Clearable> implements Pool {
 
 
     @Override
-    public RemoteStub getInstance() {
-        if(tailleMax == 0 || disponible.size()==0)
+    public T getInstance() {
+        if (disponible.isEmpty() || tailleMax == 0)
             return null;
         T obj = disponible.remove(0);
+        System.out.println((obj == null) + " " + obj.toString());
         utilisé.add(obj);
-        obj.clear();
+        //obj.clear();
         try {
-            return UnicastRemoteObject.exportObject(obj);
+            return (T) UnicastRemoteObject.exportObject(obj, 0);
         } catch (RemoteException e) {
+            System.out.println("echec de l'envoie d'un panier");
             e.printStackTrace();
         }
 
@@ -68,8 +69,8 @@ public class PoolImpl<T extends Remote & Clearable> implements Pool {
     }
 
     @Override
-    public Boolean restitution(Remote objet) {
-        return null;
+    public boolean restitution(Remote objet) throws RemoteException {
+        return false;
     }
 
 

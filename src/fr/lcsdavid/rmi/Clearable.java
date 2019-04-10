@@ -1,6 +1,9 @@
 package fr.lcsdavid.rmi;
 
-public interface Clearable {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-    public void clear();
+public interface Clearable extends Remote {
+
+    public void clear() throws RemoteException;
 }

@@ -3,6 +3,7 @@ package fr.lcsdavid.rmi.server;
 import fr.lcsdavid.rmi.Article;
 import fr.lcsdavid.rmi.IManager;
 import fr.lcsdavid.rmi.Manager;
+import fr.lcsdavid.rmi.Panier;
 
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -18,10 +19,8 @@ public class Server {
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
 
-        PoolImpl pool = new PoolImpl(PanierImpl::new, 50);
+        PoolImpl<PanierImpl> pool = new PoolImpl<>(PanierImpl::new, 50);
         registry.bind("pool", UnicastRemoteObject.exportObject(pool, 0));
-
-
     }
 
     public static void initialisation(Manager manager) throws RemoteException {

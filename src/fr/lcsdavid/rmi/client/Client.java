@@ -2,6 +2,7 @@ package fr.lcsdavid.rmi.client;
 
 import fr.lcsdavid.rmi.*;
 
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
@@ -27,7 +28,7 @@ public class Client {
         return str;
     }
 
-    private static void manipulation(String str, Catalogue catalogue, Panier panier, Scanner sc) {
+    private static void manipulation(String str, Catalogue catalogue, Panier panier, Scanner sc) throws RemoteException {
 
         if (str.equals("0"))
             System.out.println(catalogue.toString());
@@ -82,8 +83,12 @@ public class Client {
         IManager manager = (IManager) registry.lookup("manager");
         Catalogue catalogue = manager.catalogue();
         //System.out.println(catalogue.toString());
-        Pool pool = (Pool) registry.lookup("pool");
-        Panier panier = (Panier) pool.getInstance();
+        Pool<Panier> pool = (Pool<Panier>) registry.lookup("pool");
+        Panier panier = pool.getInstance();
+        if(panier == null){
+            System.out.println("au secours on a pas de panier !");
+        }
+
         Boolean shopping = true;
 
         Scanner sc = new Scanner(System.in);
