@@ -1,12 +1,16 @@
 package fr.lcsdavid.rmi.server;
 
+import fr.lcsdavid.rmi.Clearable;
 import fr.lcsdavid.rmi.Pool;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.server.RemoteStub;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-public class PoolImpl<T extends Remote, Clearable> implements Pool {
+public class PoolImpl<T extends Remote & Clearable> implements Pool {
 
     private Supplier<T> supplier;
 
@@ -38,13 +42,19 @@ public class PoolImpl<T extends Remote, Clearable> implements Pool {
 
 
     @Override
-    public Remote getInstance() {
+    public RemoteStub getInstance() {
         if(tailleMax == 0 || disponible.size()==0)
             return null;
         T obj = disponible.remove(0);
         utilisé.add(obj);
-        return obj;
+        obj.clear();
+        try {
+            return UnicastRemoteObject.exportObject(obj);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
+        return null;
     }
 
     @Override
