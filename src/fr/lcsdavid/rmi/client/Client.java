@@ -1,9 +1,6 @@
 package fr.lcsdavid.rmi.client;
 
-import fr.lcsdavid.rmi.Article;
-import fr.lcsdavid.rmi.ArticleNotFound;
-import fr.lcsdavid.rmi.Catalogue;
-import fr.lcsdavid.rmi.IManager;
+import fr.lcsdavid.rmi.*;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -85,7 +82,8 @@ public class Client {
         IManager manager = (IManager) registry.lookup("manager");
         Catalogue catalogue = manager.catalogue();
         //System.out.println(catalogue.toString());
-        Panier panier = new Panier();
+        Pool pool = (Pool) registry.lookup("pool");
+        Panier panier = (Panier) pool.getInstance();
         Boolean shopping = true;
 
         Scanner sc = new Scanner(System.in);

@@ -1,15 +1,16 @@
-package fr.lcsdavid.rmi.client;
+package fr.lcsdavid.rmi.server;
 
 import fr.lcsdavid.rmi.Article;
 import fr.lcsdavid.rmi.Commande;
+import fr.lcsdavid.rmi.Panier;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Panier {
+public class PanierImpl implements Panier {
     private Map<Article, Integer> articles = new HashMap<>();
 
-    public Panier() {
+    public PanierImpl() {
         super();
     }
 
@@ -44,7 +45,7 @@ public class Panier {
 
     @Override
     public Object clone() {
-        Panier panier = new Panier();
+        PanierImpl panier = new PanierImpl();
         panier.articles = new HashMap<>(articles);
         return panier;
     }
@@ -55,5 +56,10 @@ public class Panier {
         for (Map.Entry<Article, Integer> articleEntry : articles.entrySet())
             s += '[' + articleEntry.getValue() + "] " + articleEntry.getKey();
         return s;
+    }
+
+    @Override
+    public void clear() {
+        articles.clear();
     }
 }
