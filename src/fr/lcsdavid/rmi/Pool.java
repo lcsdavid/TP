@@ -11,4 +11,5 @@ public interface Pool<T extends Remote & Clearable> extends RemotePublisher {
     int nombreDisponible() throws RemoteException;
 
     void restitution(T objet) throws RemoteException;
+
 }

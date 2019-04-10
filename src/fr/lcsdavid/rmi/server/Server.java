@@ -3,25 +3,33 @@ package fr.lcsdavid.rmi.server;
 import fr.lcsdavid.rmi.*;
 
 import java.rmi.AlreadyBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Server {
+public class Server implements RemoteServer {
     private Registry registry = LocateRegistry.createRegistry(1099);
 
-    private Manager manager = new Manager();
+    private Catalogue catalogue = new Catalogue();
+    private Pool<Panier> pool = new ServerPool<>(ServerPanier::new, 10);
 
-    private Pool<Panier> pool = new PoolImpl<>(PanierImpl::new, 10);
+    private List<RemoteSubscriber> subscribers = new ArrayList<>();
 
     public Server() throws RemoteException, AlreadyBoundException {
-        registry.bind("manager", UnicastRemoteObject.exportObject(manager, 0));
+        registry.bind("server", UnicastRemoteObject.exportObject(this, 0));
         registry.bind("pool", UnicastRemoteObject.exportObject(pool, 0));
 
-        manager.catalogue().ajouterArticle(new Article("Epée", "Excalibur !", 3));
-        manager.catalogue().ajouterArticle(new Article("ВОДКА", "Alcool Russe de bonne facture.", 15.99f));
-        manager.catalogue().ajouterArticle(new Article("Coca-Cola", "description coca", 3));
+        catalogue.ajouterArticle(new Article("Epée", "Excalibur !", 3));
+        catalogue.ajouterArticle(new Article("ВОДКА", "Alcool Russe de bonne facture.", 15.99f));
+        catalogue.ajouterArticle(new Article("Coca-Cola", "description coca", 3));
+    }
+
+    public Catalogue catalogue() throws RemoteException {
+        return catalogue;
     }
 
     public static void main(String[] args) throws Exception {

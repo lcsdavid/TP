@@ -1,7 +1,7 @@
 package fr.lcsdavid.rmi.client;
 
 import fr.lcsdavid.rmi.*;
-import fr.lcsdavid.rmi.server.PoolImpl;
+import fr.lcsdavid.rmi.server.Server;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -13,15 +13,15 @@ public class Client implements RemoteSubscriber {
     /* On récupère le Registry disponible sur la machine 'localhost' sur le port 1099. */
     private Registry registry = LocateRegistry.getRegistry("localhost", 1099);
 
-    private IManager manager;
+    private RemoteServer server;
     private Catalogue catalogue;
     private Pool<Panier> pool;
 
     private Panier panier;
 
     public Client() throws RemoteException, NotBoundException {
-        manager = (IManager) registry.lookup("manager");
-        catalogue = manager.catalogue();
+        server = (RemoteServer) registry.lookup("server");
+        catalogue = server.catalogue();
         pool = (Pool<Panier>) registry.lookup("pool");
 
         panier = pool.instance();
@@ -53,13 +53,13 @@ public class Client implements RemoteSubscriber {
             input = choixPanier(scanner);
             switch (input) {
                 case "0":
-                    return true;
+                    break;
                 case "1":
                     System.out.println(panier.remoteToString());
-                    return true;
+                    break;
                 case "2":
                     System.out.println(panier.montantPanier());
-                    return true;
+                    break;
                 default:
                     try {
                         Article article = catalogue.article(input);
@@ -68,7 +68,8 @@ public class Client implements RemoteSubscriber {
                     } catch (ArticleNotFound articleNotFound) {
                         System.out.println("Cet objet '" + input + "' n'existe pas!");
                     }
-                    return true;
+                    scanner.nextLine();
+                    break;
             }
         } else if (!input.isEmpty()) {
             try {
@@ -93,7 +94,6 @@ public class Client implements RemoteSubscriber {
             System.out.println("Au secours on a pas de panier !");
             shopping = false;
         }
-        client.subscribe(client.pool);
 
         Scanner scanner = new Scanner(System.in);
         while (shopping)

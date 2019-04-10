@@ -7,10 +7,10 @@ import fr.lcsdavid.rmi.Panier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PanierImpl implements Panier {
+public class ServerPanier implements Panier {
     private Map<Article, Integer> articles = new HashMap<>();
 
-    public PanierImpl() {
+    public ServerPanier() {
         super();
     }
 

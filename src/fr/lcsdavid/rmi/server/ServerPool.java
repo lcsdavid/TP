@@ -1,7 +1,6 @@
 package fr.lcsdavid.rmi.server;
 
 import fr.lcsdavid.rmi.Clearable;
-import fr.lcsdavid.rmi.Panier;
 import fr.lcsdavid.rmi.Pool;
 import fr.lcsdavid.rmi.RemoteSubscriber;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
-public class PoolImpl<T extends Remote & Clearable> implements Pool {
+public class ServerPool<T extends Remote & Clearable> implements Pool {
     private Supplier<T> supplier;
     private ArrayList<RemoteSubscriber> subscribers = new ArrayList<>();
 
@@ -24,11 +23,11 @@ public class PoolImpl<T extends Remote & Clearable> implements Pool {
 
     private int tailleMax = 0;
 
-    public PoolImpl(Supplier<T> supplier) {
+    public ServerPool(Supplier<T> supplier) {
         this(supplier, 100);
     }
 
-    public PoolImpl(Supplier<T> supplier, int taille) {
+    public ServerPool(Supplier<T> supplier, int taille) {
         super();
         this.supplier = supplier;
         tailleMax = taille;
@@ -45,7 +44,9 @@ public class PoolImpl<T extends Remote & Clearable> implements Pool {
             objet.clear();
             Remote remote = UnicastRemoteObject.exportObject(objet, 0);
             utilisé.put(remote, objet);
-            System.out.println("Panier pris. Nombre de panier libres : " + disponible.size() + ". Nombre de panier occupés : " + utilisé.size() + "\n");
+            System.out.println("Panier pris.");
+            System.out.println("Nombre de panier libres : " + disponible.size() + ".");
+            System.out.println("Nombre de panier occupés : " + utilisé.size() + ".");
             if (disponible.size() < tailleMax / 2)
                 notify("La moitié des paniers a été consommé.");
             return (T) remote;
@@ -108,8 +109,7 @@ public class PoolImpl<T extends Remote & Clearable> implements Pool {
     @Override
     public void notify(String message) throws RemoteException {
         System.out.println(message);
-        for (RemoteSubscriber subscriber : subscribers) {
+        for (RemoteSubscriber subscriber : subscribers)
             subscriber.notify(message);
-        }
     }
 }
